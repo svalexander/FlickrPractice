@@ -39,7 +39,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        search();
+        searchET = (EditText) findViewById(R.id.searchET);
+        saveBtn = (Button) findViewById(R.id.enterBtn);
+        getSearchTermOnClick();
         initRV();
 
     }
@@ -50,17 +52,19 @@ public class MainActivity extends AppCompatActivity {
         getFlickrJSON();
     }
 
-    void search() {
-        searchET = (EditText) findViewById(R.id.searchET);
-        saveBtn = (Button) findViewById(R.id.enterBtn);
+    void getSearchTermOnClick() {
 
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (searchET.getText() != null) {
                     searchTerm = searchET.getText().toString();
+                    //searchTerm = "slime";
+                    Log.d("not blank et", searchTerm);
+
                 } else {
                     searchTerm = "slime";
+                    Log.d("blank et", searchTerm);
                 }
 
                 getFlickrJSON();

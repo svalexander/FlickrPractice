@@ -28,11 +28,9 @@ public class FlickrViewHolder extends RecyclerView.ViewHolder {
 
     public void bind(SinglePhoto anImage) {
 
-        //https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}.jpg
-
         String photoUrl = "https://farm" + anImage.getFarm() + ".staticflickr.com/" + anImage.getServer() +
                 "/" + anImage.getId() + "_" + anImage.getSecret() + ".jpg";
 
-        Picasso.with(context).load(photoUrl).fit().into(imageView);
+        Picasso.with(context).load(photoUrl).fit().centerInside().into(imageView);
     }
 }
